@@ -20,7 +20,7 @@ def send_email(count):
     msg["To"] = EMAIL_TO
 
     msg.set_content(
-        f"{count} new German words were added to Anki."
+        f"{count} Novas palavras foram adicionadas ao Anki."
     )
 
     with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
