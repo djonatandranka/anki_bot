@@ -28,7 +28,8 @@ for row in rows:
 sync()
 
 # Send email notification
-send_email(added)
+if added > 0:
+    send_email(added)
 
 # Print the number of words added
 print(f"Added {added} words.")
