@@ -38,6 +38,14 @@ def get_config_value(key, default=None):
     config = load_config()
     return config.get(key, default)
 
+def note_exists(german):
+    result = invoke(
+        "findNotes",
+        query=f'Deutsch:"{german}"'
+    )
+
+    return len(result) > 0
+
 
 def add_word(
     deck=None,
