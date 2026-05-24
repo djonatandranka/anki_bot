@@ -30,11 +30,11 @@ def add_word(
 
     note = {
         "deckName": deck,
-        "modelName": "German Vocabulary",
+        "modelName": "Vocabulario_Deutsch",
         "fields": {
-            "German": german,
-            "Portuguese": portuguese,
-            "Sentence": sentence
+            "Deutsch": german,
+            "Portugues": portuguese,
+            "Frase": sentence
         },
         "tags": tags
     }
