@@ -12,7 +12,7 @@ creds = Credentials.from_service_account_file(
 
 client = gspread.authorize(creds)
 
-sheet = client.open("German Vocabulary").sheet1
+sheet = client.open("Palavras-Anki").get_worksheet(0)
 
 rows = sheet.get_all_records()
 
