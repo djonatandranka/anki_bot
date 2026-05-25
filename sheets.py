@@ -21,7 +21,7 @@ def get_rows():
 
 
 def mark_as_imported(row_number):
-    IMPORTED_COLUMN = 4
+    IMPORTED_COLUMN = 5  # Assuming "Imported" is the 5th column (E)
 
     sheet.update_cell(
         row_number,
