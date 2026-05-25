@@ -48,7 +48,9 @@ for index, row in enumerate(rows, start=2):
 
 sync()
 
-send_email(added)
+# Send email notification if any new words were added
+if added > 0:
+    send_email(added)
 
 print(f"Added: {added}")
 print(f"Skipped: {skipped}")
