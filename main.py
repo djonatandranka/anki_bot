@@ -13,7 +13,7 @@ for index, row in enumerate(rows, start=2):
 
     if imported == "TRUE":
         skipped += 1
-        print(f"Already imported: {row['German']}")
+        print(f"Already imported: {row['Deutsch']}")
         continue
 
     german = row["Deutsch"]
