@@ -31,7 +31,6 @@ for index, row in enumerate(rows, start=2):
 
     try:
         add_word(
-            deck="German",
             german=german,
             portuguese=portuguese,
             sentence=sentence,
