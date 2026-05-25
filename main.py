@@ -16,9 +16,10 @@ for index, row in enumerate(rows, start=2):
         print(f"Already imported: {row['German']}")
         continue
 
-    german = row["German"]
-    english = row["English"]
-    sentence = row.get("Sentence", "")
+    german = row["Deutsch"]
+    portuguese = row["Portugues"]
+    sentence = row.get("Frase", "")
+    tags = row.get("Tags", "").split(",") if row.get("Tags") else []
 
     if note_exists(german):
         print(f"Skipping duplicate: {german}")
@@ -32,9 +33,9 @@ for index, row in enumerate(rows, start=2):
         add_word(
             deck="German",
             german=german,
-            english=english,
+            english=portuguese,
             sentence=sentence,
-            tags=["google-sheets"]
+            tags=tags
         )
 
         mark_as_imported(index)
