@@ -1,6 +1,7 @@
 from sheets import get_rows, mark_as_imported
 from anki import add_word, note_exists, sync
 from emailer import send_email
+import logging
 
 rows = get_rows()
 
@@ -13,7 +14,7 @@ for index, row in enumerate(rows, start=2):
 
     if imported == "TRUE":
         skipped += 1
-        print(f"Already imported: {row['Deutsch']}")
+        logging.info(f"Skipping already imported word: {row['Deutsch']}")
         continue
 
     german = row["Deutsch"]
@@ -22,7 +23,7 @@ for index, row in enumerate(rows, start=2):
     tags = row.get("Tags", "").split(",") if row.get("Tags") else []
 
     if note_exists(german):
-        print(f"Skipping duplicate: {german}")
+        logging.info(f"Skipping duplicate word: {german}")
 
         mark_as_imported(index)
 
@@ -39,12 +40,12 @@ for index, row in enumerate(rows, start=2):
 
         mark_as_imported(index)
 
-        print(f"Added: {german}")
+        logging.info(f"Added word: {german}")
 
         added += 1
 
     except Exception as e:
-        print(f"Error adding {german}: {e}")
+        logging.error(f"Error adding {german}: {e}")
 
 sync()
 
@@ -52,5 +53,5 @@ sync()
 if added > 0:
     send_email(added)
 
-print(f"Added: {added}")
-print(f"Skipped: {skipped}")
+logging.info(f"Added: {added}")
+logging.info(f"Skipped: {skipped}")
