@@ -3,6 +3,12 @@ from anki import add_word, note_exists, sync
 from emailer import send_email
 import logging
 
+# Configure logging
+logging.basicConfig(
+    filename="anki_bot.log",
+    level=logging.INFO
+)
+
 rows = get_rows()
 
 added = 0

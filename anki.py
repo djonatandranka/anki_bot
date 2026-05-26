@@ -1,5 +1,11 @@
+import logging
 import requests
 from pathlib import Path
+
+logging.basicConfig(
+    filename="anki_bot.log",
+    level=logging.INFO
+)
 
 ANKI_URL = "http://localhost:8765"
 CONFIG_PATH = Path(__file__).parent / "config.yaml"
@@ -76,5 +82,17 @@ def add_word(
     return invoke("addNote", note=note)
 
 
+
+
 def sync():
-    return invoke("sync")
+    try:
+        result = invoke("sync")
+
+        logging.info("Anki sync completed successfully.")
+
+        return True
+
+    except Exception as e:
+        logging.error(f"Anki sync failed: {e}")
+
+        return False
